@@ -2,7 +2,7 @@ FROM php:7.1-fpm-jessie
 MAINTAINER Sylius Docker Team <docker@sylius.org>
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV DEBIAN_CODENAME phpnginx
+ENV DEBIAN_CODENAME jessie
 ENV TZ UTC
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
@@ -57,7 +57,7 @@ RUN mkdir /entrypoint.d
 
 # Speedup composer
 USER www-data
-RUN composer global require hirak/prestissimo
+RUN composer global require hirak/prestissimo --ignore-platform-reqs
 USER root
 
 # PHP configuration
